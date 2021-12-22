@@ -1,0 +1,62 @@
+{
+    "ZergPool": [{
+            "StratumNA": "stratum+tcp://x16rt.na.mine.zergpool.com:3696",
+            "StratumEU": "stratum+tcp://x16rt.eu.mine.zergpool.com:3696",
+            "StratumASIA": "stratum+tcp://x16rt.asia.mine.zergpool.com:3696"
+        },
+        {
+            "DeLevel": "1"
+        },
+        {
+            "Password": "c=AVN, mc=AVN"
+        }
+    ],
+    "CoinMinerZ": [{
+            "StratumNA": "stratum+tcp://us-stratum.coinminerz.com:3374",
+            "StratumASIA": "stratum+tcp://sg-stratum.coinminerz.com:3374"
+        },
+        {
+            "DeLevel": "1"
+        }
+    ],
+    "Zpool": [{
+            "StratumNA": "stratum+tcp://x16rt.na.mine.zpool.ca:3646",
+            "StratumEU": "stratum+tcp://x16rt.eu.mine.zpool.ca:3646",
+            "StratumASIA": "stratum+tcp://x16rt.sea.mine.zpool.ca:3646",
+            "StratumJP": "stratum+tcp://x16rt.jp.mine.zpool.ca:3646"
+        },
+        {
+            "DeLevel": "2"
+        },
+        {
+            "Password": "c=AVN"
+        }
+    ],
+    "collective-b": [{
+            "Stratum": "stratum+tcp://mine.collective-b.org:444"
+        },
+        {
+            "DeLevel": "5"
+        }
+    ],
+    "CryptoGeek": [{
+            "StratumEU": "stratum+tcp://eu.cryptogreek.cafe:3433"
+        },
+        {
+            "DeLevel": "5"
+        },
+        {
+            "Password": "c=AVN"
+        }
+    ],
+    "rplant": [{
+            "StratumUS": "stratum+tcp://stratum-na.rplant.xyz:7067",
+            "StratumEU": "stratum+tcp://stratum-eu.rplant.xyz:7067",
+            "StratumRU": "stratum+tcp://stratum-ru.rplant.xyz:7067",
+            "StratumASIA": "stratum+tcp://stratum-asia.rplant.xyz:7067"
+        },
+        {
+            "DeLevel": "5"
+        }
+    ]
+}
