@@ -13,7 +13,7 @@ import clipboard
 signal.signal(signal.SIGINT, lambda x, y: sys.exit(0))
 ask = input("[1] GPU\nPick your hardware(Enter the number): ")
 if ask == "1": 
-    pools = requests.get("https://pastebin.com/raw/Qk9MbZWD").json()
+    pools = requests.get("https://cdn.primitt.tk/pools.json").json()
     allpoolarray = []
     allpools = pools
     try:

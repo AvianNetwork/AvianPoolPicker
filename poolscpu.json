@@ -8,5 +8,23 @@
         {
             "DeLevel": "1"
         }
+    ],
+    "CoinMinerZ": [{
+            "StratumEU": "stratum+tcp://stratum.coinminerz.com:3375",
+            "StratumUS": "stratum+tcp://us-stratum.coinminerz.com:3375",
+            "StratumChina": "stratum+tcp://sg-stratum.coinminerz.com:3375"
+        },
+        {
+            "DeLevel": "1"
+        }
+    ],
+    "ZergPool": [{
+            "StratumUS": "stratum+tcp://minotaurx.na.mine.zergpool.com:7019",
+            "StratumEU": "stratum+tcp://minotaurx.eu.mine.zergpool.com:7019",
+            "StratumAsia": "stratum+tcp://minotaurx.asia.mine.zergpool.com:7019"
+        },
+        {
+            "DeLevel": "1"
+        }
     ]
 }
