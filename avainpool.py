@@ -10,8 +10,12 @@ import requests
 from colorama import Fore, Back
 import signal
 import sys
-import clipboard
+try:
+    import clipboard
+except ModuleNotFoundError:
+    import pyperclip as clipboard
 import multiprocessing
+import pip
 signal.signal(signal.SIGINT, lambda x, y: sys.exit(0))
 ask = input("[1] GPU\n[2] CPU\nPick your hardware(Enter the number): ")
 if ask == "1": 
