@@ -24,7 +24,41 @@
             "StratumAsia": "stratum+tcp://minotaurx.asia.mine.zergpool.com:7019"
         },
         {
-            "DeLevel": "1"
+            "DeLevel": "5"
+        }
+    ],
+    "Zpool": [{
+            "StratumUS": "stratum+tcp://minotaurx.na.mine.zpool.ca:7019",
+            "StratumEU": "stratum+tcp://minotaurx.eu.mine.zpool.ca:7019",
+            "StratumAsia": "stratum+tcp://minotaurx.sea.mine.zpool.ca:7019",
+            "StratumJP": "stratum+tcp://minotaurx.jp.mine.zpool.ca:7019"
+        },
+        {
+            "Password": "c=AVN"
+        },
+        {
+            "DeLevel": "5"
+        }
+    ],
+    "Collective-B": [{
+            "Stratum Canada": "stratum+tcp://mine.collective-b.org:7019"
+        },
+        {
+            "DeLevel": "7"
+        }
+    ],
+    "CoolMinerZ-Hopto": [{
+            "Stratum": "stratum+tcp://coolminerz.hopto.org:7021"
+        },
+        {
+            "DeLevel": "10"
+        }
+    ],
+    "MurkaPool": [{
+            "Stratum Europe": "stratum+tcp://murkapool.it:7019"
+        },
+        {
+            "DeLevel": "Unknown"
         }
     ]
 }

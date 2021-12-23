@@ -209,9 +209,9 @@ if ask == "2":
     cpuchoices.append(cpuaskaddress)
     cpuaskmtype = input("[1] Solo or [2] Pool \nPlease choose the number of the mining type you want: ")
     if cpuaskmtype == "1":
-        cpuchoices.append("m=solo")
+        cpuchoices.append("c=AVN, m=solo")
     if cpuaskmtype == "2":
-        cpuchoices.append("x")
+        cpuchoices.append("c=AVN")
     cputhreads = (f"How many threads would you like to use? There is a max of {multiprocessing.cpu_count()} threads on your computer: ")
     cpuaskthreads = input(cputhreads)
     cpuchoices.append(cpuaskthreads)
