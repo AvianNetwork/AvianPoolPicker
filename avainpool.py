@@ -10,6 +10,7 @@ import requests
 from colorama import Fore, Back
 import signal
 import sys
+from ping3 import ping
 try:
     import clipboard
 except ModuleNotFoundError:
