@@ -12,7 +12,7 @@ import sys
 import clipboard
 signal.signal(signal.SIGINT, lambda x, y: sys.exit(0))
 
-pools = requests.get("https://pastebin.com/raw/NAiT5LYh").json()
+pools = requests.get("https://pastebin.com/raw/Qk9MbZWD").json()
 allpoolarray = []
 allpools = pools
 try:
