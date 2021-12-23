@@ -1,4 +1,5 @@
 import configparser
+import enum
 from types import TracebackType
 from typing import List
 import requests
@@ -11,7 +12,7 @@ import signal
 import sys
 import clipboard
 signal.signal(signal.SIGINT, lambda x, y: sys.exit(0))
-ask = input("[1] GPU\nPick your hardware(Enter the number): ")
+ask = input("[1] GPU\n[2] CPU\nPick your hardware(Enter the number): ")
 if ask == "1": 
     pools = requests.get("https://cdn.primitt.tk/pools.json").json()
     allpoolarray = []
@@ -40,7 +41,6 @@ if ask == "1":
     except KeyError or IndexError:
         print("Unable to parse JSON file! Please try again")
     
-    allpools = pools
 
     stratums = []
     stratumskeys = []
@@ -117,5 +117,103 @@ if ask == "1":
         print("\nThis is now copied onto your clipboard!")
     except IndexError:
         print("You missed an option!")
+if ask == "2":
+    cpupools = requests.get("https://cdn.primitt.tk/poolscpu.json").json()
+    cpuallpoolsarray = []
+    cpuallpools = cpupools
+    try:
+        for cpupoolkeys in cpupools:
+            cpuallpoolsarray.append(cpupoolkeys)
+    except IndexError or KeyError:
+        print("Could not find file! Please relaunch")
+        time.sleep(5)
+        exit()
+    try:
+        for count, poolkey in enumerate(cpupools, 1):
+            print("[",count,"]", poolkey)
+    except KeyError or IndexError: 
+        print("Could not recive pools! Try again later.")
+        time.sleep(5)
+        exit()
+    cpupickpool = input("What pool would you like to pick from the above list? (Pick the Number")
+    try:
+        cpupickpoolint = int(cpupickpool)-1
+        cpugetpoolfa = cpuallpoolsarray[cpupickpoolint]
+    except KeyError or IndexError:
+        print("You selected a non-integer number")
+    try:
+        cpugetpool = cpupools[cpugetpoolfa][0]
+    except KeyError or IndexError:
+        print("Error parsing JSON")
+        time.sleep(5)
+        exit()
+    
+    cpustratums = []
+    cpustratumkeys = []
+    cpuchoices = []
+    try:
+        for cpukey in cpugetpool:
+            cpustratums.append(cpukey)
+            continue
+    except KeyError or IndexError:
+        print("Pool does not exist") 
+        time.sleep(5)
+        exit()
+    try:
+        print("Avalible Stratums:")
+        for cpukeys in cpugetpool:
+            continue;
+    except:
+        print("Pool does not exist")
+        time.sleep(5)
+        exit()
+    try:
+        for choice, cpukeys in enumerate(cpugetpool, 1):
+            print("[",choice,"]", cpukeys)
+    except KeyError or IndexError:
+        print("Index Error")
+        print("\nClosing in 6 Seconds...")
+        time.sleep(6)
+        print("Closing")
+        exit()
+    cpuaskstratum = input("Pick the Stratum (Enter a number): ")
+    cpustratumarray = []
+    try:
+        for keys in cpugetpool:
+            cpustratumarray.append(keys)
+    except KeyError or IndexError:
+        print("Index Error")
+        print("\nClosing in 6 Seconds...")
+        time.sleep(6)
+        print("Closing")
+        exit()
+    try:
+        cpugetstratumint = int(cpuaskstratum)-1
+        cpugetstratumfa = cpustratumarray[cpugetstratumint]
+    except IndexError:
+        print("You selected a non integer number.")
+    try:
+        cpugetstratum = cpupools[cpugetpoolfa][0][cpugetstratumfa]
+    except KeyError or IndexError:
+        print("Unable to parse JSON file! Please try again")
+    cpuaskminer = input("Choose the Miner: \n[1] Rplant CPU Miner OPT\nEnter the Number of the Miner you want to pick: ")
+    if cpuaskminer == "1":
+        cpuchoices.append("cpuminer-sse2.exe")
+    cpuchoices.append(cpugetstratum)
+    cpuaskaddress = input("Enter Avain Address (Right click to paste): ")
+    cpuchoices.append(cpuaskaddress)
+    cpuaskmtype = input("[1] Solo or [2] Pool \nPlease choose the number of the mining type you want")
+    if cpuaskmtype == "1":
+        cpuchoices.append("m=solo")
+    if cpuaskmtype == "2":
+        cpuchoices.append("x")
+    try:
+        cmdlinewf = (f"{cpuchoices[0]} -a minotaurx -o {cpuchoices[1]} -u {cpuchoices[2]} -p {cpuchoices[3]}")
+        clipboard.copy(cmdlinewf)
+        print("Command Line: ", cpuchoices[0], "-a minotaurx -o", cpuchoices[1], "-u", cpuchoices[2], "-p", cpuchoices[3])
+        print("\nThis is now copied onto your clipboard!")
+    except IndexError:
+        print("You missed an option!")
 print("Finished Operation, Closing in 20 seconds automatically...")
 time.sleep(20)
+
