@@ -11,6 +11,7 @@ from colorama import Fore, Back
 import signal
 import sys
 import clipboard
+import multiprocessing
 signal.signal(signal.SIGINT, lambda x, y: sys.exit(0))
 ask = input("[1] GPU\n[2] CPU\nPick your hardware(Enter the number): ")
 if ask == "1": 
@@ -135,7 +136,7 @@ if ask == "2":
         print("Could not recive pools! Try again later.")
         time.sleep(5)
         exit()
-    cpupickpool = input("What pool would you like to pick from the above list? (Pick the Number")
+    cpupickpool = input("What pool would you like to pick from the above list? (Pick the Number): ")
     try:
         cpupickpoolint = int(cpupickpool)-1
         cpugetpoolfa = cpuallpoolsarray[cpupickpoolint]
@@ -202,15 +203,18 @@ if ask == "2":
     cpuchoices.append(cpugetstratum)
     cpuaskaddress = input("Enter Avain Address (Right click to paste): ")
     cpuchoices.append(cpuaskaddress)
-    cpuaskmtype = input("[1] Solo or [2] Pool \nPlease choose the number of the mining type you want")
+    cpuaskmtype = input("[1] Solo or [2] Pool \nPlease choose the number of the mining type you want: ")
     if cpuaskmtype == "1":
         cpuchoices.append("m=solo")
     if cpuaskmtype == "2":
         cpuchoices.append("x")
+    cputhreads = (f"How many threads would you like to use? There is a max of {multiprocessing.cpu_count()} threads on your computer: ")
+    cpuaskthreads = input(cputhreads)
+    cpuchoices.append(cpuaskthreads)
     try:
-        cmdlinewf = (f"{cpuchoices[0]} -a minotaurx -o {cpuchoices[1]} -u {cpuchoices[2]} -p {cpuchoices[3]}")
+        cmdlinewf = (f"{cpuchoices[0]} -a minotaurx -o {cpuchoices[1]} -u {cpuchoices[2]} -p {cpuchoices[3]} -t {cpuchoices[4]}")
         clipboard.copy(cmdlinewf)
-        print("Command Line: ", cpuchoices[0], "-a minotaurx -o", cpuchoices[1], "-u", cpuchoices[2], "-p", cpuchoices[3])
+        print("Command Line: ", cpuchoices[0], "-a minotaurx -o", cpuchoices[1], "-u", cpuchoices[2], "-p", cpuchoices[3], "-t", cpuchoices[4])
         print("\nThis is now copied onto your clipboard!")
     except IndexError:
         print("You missed an option!")
