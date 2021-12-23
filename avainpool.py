@@ -36,11 +36,9 @@ except IndexError:
     print("You selected a non integer number.")
 try:
     getpool = pools[getpoolfa][0]
-    print(getpool)
 except KeyError or IndexError:
     print("Unable to parse JSON file! Please try again")
     
-print(allpoolarray)
 allpools = pools
 
 stratums = []
@@ -58,8 +56,7 @@ except KeyError:
 try:
     print("Avalible Stratums:")
     for keys in getpool:
-        print(keys)
-    print("\n")
+        continue
 except:
     print("Pool Does Not exist")
     exit()
@@ -90,7 +87,6 @@ except IndexError:
     print("You selected a non integer number.")
 try:
     getstratum = pools[getpoolfa][0][getstratumfa]
-    print(getstratum)
 except KeyError or IndexError:
     print("Unable to parse JSON file! Please try again")
     
@@ -99,8 +95,10 @@ if askminer == "2":
     choices.append("t-rex.exe")
 if askminer == "1":
     choices.append("teamredminer.exe")
+# if askminer == "3":
+#     choices.append("cpumineropt.exe")
 choices.append(getstratum)
-askaddress = input("Enter Avain Address: ")
+askaddress = input("Enter Avain Address (Right click to paste): ")
 choices.append(askaddress)
 askmtype = input(
     "[1] Solo or [2] Pool \nPlease choose the number of the mining type you want: ")
@@ -108,9 +106,10 @@ if askmtype == "1":
     choices.append("m=SOLO")
 if askmtype == "2":
     choices.append("x")
-print("Array: ", choices, "\n")
+# if askminer == "3":
+#     askthreads = input("Enter Amount of threads you want to use: ")
+#     choices.append(askthreads)
 try:
-    command_line = ("Command Line: ", choices[0], "-a x16rt -o", choices[1], "-u", choices[2], "-p", choices[3])
     cmdlinewf = (f"{choices[0]} -a x16rt -o {choices[1]} -u {choices[2]} -p {choices[3]}")
     clipboard.copy(cmdlinewf)
     print("Command Line: ", choices[0], "-a x16rt -o", choices[1], "-u", choices[2], "-p", choices[3])
@@ -119,4 +118,3 @@ except IndexError:
     print("You missed an option!")
 print("Finished Operation, Closing in 20 seconds automatically...")
 time.sleep(20)
-
