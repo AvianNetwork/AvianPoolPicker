@@ -1,0 +1,12 @@
+{
+    "rplant": [{
+            "StratumUS": "stratum+tcps://stratum-na.rplant.xyz:17068",
+            "StratumEU": "stratum+tcps://stratum-eu.rplant.xyz:17068",
+            "StratumRU": "stratum+tcps://stratum-ru.rplant.xyz:17068",
+            "StratumASIA": "stratum+tcps://stratum-asia.rplant.xyz:17068"
+        },
+        {
+            "DeLevel": "1"
+        }
+    ]
+}
