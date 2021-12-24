@@ -33,7 +33,7 @@
         }
     ],
     "collective-b": [{
-            "Stratum": "stratum+tcp://mine.collective-b.org:444"
+            "Stratum": "stratum+tcp://mine.collective-b.org:7220"
         },
         {
             "DeLevel": "5"
