@@ -58,5 +58,8 @@
         {
             "DeLevel": "5"
         }
-    ]
+    ],
+    "cryptoverse": [{
+        "Stratum Main": "stratum+tcp://pool.cryptoverse.eu:7171"
+    }]
 }
