@@ -17,6 +17,9 @@ except ModuleNotFoundError:
     import pyperclip as clipboard
 import multiprocessing
 import pip
+from tkinter import *
+window = Tk()
+window.title("Avain Pool Picker - Avian Companions")
 signal.signal(signal.SIGINT, lambda x, y: sys.exit(0))
 ask = input("[1] GPU\n[2] CPU\nPick your hardware(Enter the number): ")
 if ask == "1": 
