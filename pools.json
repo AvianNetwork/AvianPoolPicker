@@ -1,11 +1,11 @@
 {
     "CoinMinerz.com": [{
             "StratumEU": "stratum+tcp://stratum.coinminerz.com:3374",
-            "StratumEU-TLS": "stratum+tcp://stratum.coinminerz.com:3474",
-            "StratumNA": "stratum+tcp://us-stratum.coinminerz.com:3374",
-            "StratumNA-TLS": "stratum+tcp://us-stratum.coinminerz.com:3474",
+            "StratumEU-TLS": "stratum+tcps://stratum.coinminerz.com:3474",
+            "StratumUS": "stratum+tcp://us-stratum.coinminerz.com:3374",
+            "StratumUS-TLS": "stratum+tcps://us-stratum.coinminerz.com:3474",
             "StratumASIA": "stratum+tcp://sg-stratum.coinminerz.com:3374",
-            "StratumASIA-TLS": "stratum+tcp://sg-stratum.coinminerz.com:3474"
+            "StratumASIA-TLS": "stratum+tcps://sg-stratum.coinminerz.com:3474"
         },
         {
             "DeLevel": "1"
