@@ -1,5 +1,5 @@
-# AvainPoolPicker
-This is a python pool picker for avain network! It will generate a command line for you!
+# AvianPoolPicker
+This is a python pool picker for Avian Network! It will generate a command line for you!
 
 CDN Index:
 
