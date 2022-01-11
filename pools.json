@@ -1,16 +1,4 @@
 {
-    "ZergPool": [{
-            "StratumNA": "stratum+tcp://x16rt.na.mine.zergpool.com:3696",
-            "StratumEU": "stratum+tcp://x16rt.eu.mine.zergpool.com:3696",
-            "StratumASIA": "stratum+tcp://x16rt.asia.mine.zergpool.com:3696"
-        },
-        {
-            "DeLevel": "1"
-        },
-        {
-            "Password": "c=AVN, mc=AVN"
-        }
-    ],
     "CoinMinerz.com": [{
             "StratumEU": "stratum+tcp://stratum.coinminerz.com:3374",
             "StratumEU-TLS": "stratum+tcp://stratum.coinminerz.com:3474",
@@ -21,19 +9,9 @@
         },
         {
             "DeLevel": "1"
-        }
-    ],
-    "Zpool": [{
-            "StratumNA": "stratum+tcp://x16rt.na.mine.zpool.ca:3646",
-            "StratumEU": "stratum+tcp://x16rt.eu.mine.zpool.ca:3646",
-            "StratumASIA": "stratum+tcp://x16rt.sea.mine.zpool.ca:3646",
-            "StratumJP": "stratum+tcp://x16rt.jp.mine.zpool.ca:3646"
         },
         {
-            "DeLevel": "2"
-        },
-        {
-            "Password": "c=AVN"
+            "Password": "YourRandomPassword"
         }
     ],
     "collective-b": [{
@@ -53,6 +31,10 @@
             "Password": "c=AVN"
         }
     ],
+    "cryptoverse": [{
+        "Stratum Main": "stratum+tcp://pool.cryptoverse.eu:7171"
+    }
+    ],
     "rplant": [{
             "StratumUS": "stratum+tcp://stratum-na.rplant.xyz:7067",
             "StratumEU": "stratum+tcp://stratum-eu.rplant.xyz:7067",
@@ -63,7 +45,29 @@
             "DeLevel": "5"
         }
     ],
-    "cryptoverse": [{
-        "Stratum Main": "stratum+tcp://pool.cryptoverse.eu:7171"
-    }]
+    "ZergPool": [{
+            "StratumNA": "stratum+tcp://x16rt.na.mine.zergpool.com:3696",
+            "StratumEU": "stratum+tcp://x16rt.eu.mine.zergpool.com:3696",
+            "StratumASIA": "stratum+tcp://x16rt.asia.mine.zergpool.com:3696"
+        },
+        {
+            "DeLevel": "1"
+        },
+        {
+            "Password": "c=AVN, mc=AVN"
+        }
+    ],
+    "Zpool": [{
+            "StratumNA": "stratum+tcp://x16rt.na.mine.zpool.ca:3646",
+            "StratumEU": "stratum+tcp://x16rt.eu.mine.zpool.ca:3646",
+            "StratumASIA": "stratum+tcp://x16rt.sea.mine.zpool.ca:3646",
+            "StratumJP": "stratum+tcp://x16rt.jp.mine.zpool.ca:3646"
+        },
+        {
+            "DeLevel": "2"
+        },
+        {
+            "Password": "c=AVN"
+        }
+    ]
 }

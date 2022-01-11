@@ -1,14 +1,4 @@
 {
-    "rplant": [{
-            "StratumUS": "stratum+tcps://stratum-na.rplant.xyz:17068",
-            "StratumEU": "stratum+tcps://stratum-eu.rplant.xyz:17068",
-            "StratumRU": "stratum+tcps://stratum-ru.rplant.xyz:17068",
-            "StratumASIA": "stratum+tcps://stratum-asia.rplant.xyz:17068"
-        },
-        {
-            "DeLevel": "1"
-        }
-    ],
     "CoinMinerz.com": [{
             "StratumEU": "stratum+tcp://stratum.coinminerz.com:3375",
             "StratumEU-TLS": "stratum+tcp://stratum.coinminerz.com:3475",
@@ -16,6 +6,26 @@
             "StratumNA-TLS": "stratum+tcp://us-stratum.coinminerz.com:3475",
             "StratumASIA": "stratum+tcp://sg-stratum.coinminerz.com:3375",
             "StratumASIA-TLS": "stratum+tcp://sg-stratum.coinminerz.com:3475"
+        },
+        {
+            "DeLevel": "1"
+        },
+        {
+            "Password": "YourRandomPassword"
+        }
+    ],
+    "Collective-B": [{
+            "Stratum Canada": "stratum+tcp://mine.collective-b.org:7019"
+        },
+        {
+            "DeLevel": "7"
+        }
+    ],
+    "rplant": [{
+            "StratumUS": "stratum+tcps://stratum-na.rplant.xyz:17068",
+            "StratumEU": "stratum+tcps://stratum-eu.rplant.xyz:17068",
+            "StratumRU": "stratum+tcps://stratum-ru.rplant.xyz:17068",
+            "StratumASIA": "stratum+tcps://stratum-asia.rplant.xyz:17068"
         },
         {
             "DeLevel": "1"
@@ -41,27 +51,6 @@
         },
         {
             "DeLevel": "5"
-        }
-    ],
-    "Collective-B": [{
-            "Stratum Canada": "stratum+tcp://mine.collective-b.org:7019"
-        },
-        {
-            "DeLevel": "7"
-        }
-    ],
-    "CoolMinerZ-Hopto": [{
-            "Stratum": "stratum+tcp://coolminerz.hopto.org:7021"
-        },
-        {
-            "DeLevel": "10"
-        }
-    ],
-    "MurkaPool": [{
-            "Stratum Europe": "stratum+tcp://murkapool.it:7019"
-        },
-        {
-            "DeLevel": "Unknown"
         }
     ]
 }
