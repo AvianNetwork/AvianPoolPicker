@@ -21,9 +21,10 @@ global allpoolarray
 global allpools
 global poolkeys
 global pools
-#
+
+stratum_array = []
 password_array = []
-pools = requests.get("https://raw.githubusercontent.com/AvianNetwork/AvianPoolPicker/main/pools.json").json()
+pools = requests.get("https://aviannetwork.github.io/AvianPoolPicker/pools.json").json()
 allpoolarray = []
 allpools = pools
 try:
@@ -35,7 +36,7 @@ except KeyError or IndexError:
 
 e = tk.StringVar()
 e.set("Pick an Option")
-hardlist = tk.OptionMenu(window, e, "GPU", "CPU").pack()
+hardlist = tk.OptionMenu(window, e, "GPU").pack()
 hardbutton = tk.Button(text="Next ->", command=lambda: get_selected())
 hardbutton.pack()
 # Pool picking page
@@ -80,6 +81,7 @@ def gps():
             stratumvar.set("Pick an Option")
             stratumlist = tk.OptionMenu(window, stratumvar, *poolsarray)
             stratumbutton = tk.Button(window, text="Next", command=lambda: gpc())
+            get_strat = stratumvar.get()
             poolbutton.destroy()
             stratumlist.pack()
             stratumbutton.pack()
@@ -93,7 +95,7 @@ textbutton = tk.Button(window, text="Next ->", command=lambda: gtm())
 #solo or pool
 modeget = tk.StringVar()
 modemenu = tk.OptionMenu(window, modeget, "Solo", "Pool")
-
+modebutton = tk.Button(window, text="Next ->", command=lambda: gtr())
 def gpc():
     strat_get = stratumvar.get()
     if strat_get == "Pick an Option":
@@ -103,17 +105,23 @@ def gpc():
         textbox.pack()
         textbutton.pack()
 def gtm():
-    get_modeget = modeget.get()
+    global text_get
+    text_get = text.get()
     global set_mode
-    modemenu.pack()
-    if password_array[0] == "no-pass":
-        print("No password")
+    if password_array[0] == "None":
+        password_array.append("x")
     else:
-        print("Password:", passwordkeys)
+        pass
+    modemenu.pack()
+    modebutton.pack() 
+def gtr():
+    global get_modeget
+    get_modeget = modeget.get()
     if get_modeget == "Pick an Option":
         pass
-    if get_modeget == "Pool":
-        global set_password
-        
+    if get_modeget == "Solo":
+        password_array.append("m=solo")
+    label = (f"minername -o {poolsarray[2]} -u {text_get} -p {password_array[2]}")
+    tk.Label(text=label).pack()
     #tk.Label(text="Thank you for using the BETA version of this app. It only goes up till here for now - primitt").pack()
 window.mainloop()

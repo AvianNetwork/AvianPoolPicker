@@ -20,7 +20,7 @@ import pip
 from tkinter import *
 ask = input("[1] GPU\n[2] CPU\nPick your hardware(Enter the number): ")
 if ask == "1": 
-    pools = requests.get("https://cdn.primitt.tk/pools.json").json()
+    pools = requests.get("https://aviannetwork.github.io/AvianPoolPicker/pools.json").json()
     allpoolarray = []
     allpools = pools
     try:
@@ -128,7 +128,7 @@ if ask == "1":
     except IndexError:
         print("You missed an option!")
 if ask == "2":
-    cpupools = requests.get("https://raw.githubusercontent.com/AvianNetwork/AvianPoolPicker/main/poolscpu.json").json()
+    cpupools = requests.get("https://aviannetwork.github.io/AvianPoolPicker/poolscpu.json").json()
     cpuallpoolsarray = []
     cpuallpools = cpupools
     try:

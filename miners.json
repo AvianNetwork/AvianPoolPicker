@@ -1,0 +1,6 @@
+{
+    "T-Rex Miner": [{
+        "Windows": "trex.exe",
+        "Linux": "./trex"
+    }]
+}
