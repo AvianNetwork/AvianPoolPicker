@@ -18,9 +18,6 @@ except ModuleNotFoundError:
 import multiprocessing
 import pip
 from tkinter import *
-window = Tk()
-window.title("Avian Pool Picker - Avian Companions")
-signal.signal(signal.SIGINT, lambda x, y: sys.exit(0))
 ask = input("[1] GPU\n[2] CPU\nPick your hardware(Enter the number): ")
 if ask == "1": 
     pools = requests.get("https://cdn.primitt.tk/pools.json").json()
@@ -131,7 +128,7 @@ if ask == "1":
     except IndexError:
         print("You missed an option!")
 if ask == "2":
-    cpupools = requests.get("https://cdn.primitt.tk/poolscpu.json").json()
+    cpupools = requests.get("https://raw.githubusercontent.com/AvianNetwork/AvianPoolPicker/main/poolscpu.json").json()
     cpuallpoolsarray = []
     cpuallpools = cpupools
     try:
