@@ -94,8 +94,20 @@ textbox = tk.Entry(window, textvariable=text)
 textbutton = tk.Button(window, text="Next ->", command=lambda: gtm())
 #solo or pool
 modeget = tk.StringVar()
+modeget.set("Pick an Option")
 modemenu = tk.OptionMenu(window, modeget, "Solo", "Pool")
 modebutton = tk.Button(window, text="Next ->", command=lambda: gtr())
+# miner name
+json_miners = []
+json_miner = requests.get("https://aviannetwork.github.io/AvianPoolPicker/miners.json").json()
+for keys in json_miner:
+    json_miners.append(keys)
+jsonvar = tk.StringVar()
+jsonvar.set("Pick an Option")
+jsonoption = tk.OptionMenu(window, jsonvar, *json_miners)
+jsonbtn = tk.Button(window, text="Next ->", command=lambda: gthw())
+#software
+
 def gpc():
     strat_get = stratumvar.get()
     if strat_get == "Pick an Option":
@@ -121,7 +133,24 @@ def gtr():
         pass
     if get_modeget == "Solo":
         password_array.append("m=solo")
-    label = (f"minername -o {poolsarray[2]} -u {text_get} -p {password_array[2]}")
-    tk.Label(text=label).pack()
+    jsonoption.pack()
+    jsonbtn.pack()
+def gthw():
+    modebutton.destroy()
+    global get_miner_op
+    get_miner_op = jsonvar.get()
+    if get_miner_op == "Pick an Option":
+        pass
+    else:
+        global json_miner_index
+        global get_soft
+        json_miner_index = json_miners.index(get_miner_op)        
+        get_soft = json_miner[get_miner_op]
+        get_software_ops = []
+        for keys in get_soft:
+             get_software_ops.append(keys)
+
+    # label = (f"minername -o {poolsarray[2]} -u {text_get} -p {password_array[2]}")
+    # tk.Label(text=label).pack()
     #tk.Label(text="Thank you for using the BETA version of this app. It only goes up till here for now - primitt").pack()
 window.mainloop()
