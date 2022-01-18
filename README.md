@@ -4,7 +4,7 @@ This is a python pool picker for Avian Network! It will generate a command line 
   ![GitHub all releases](https://img.shields.io/github/downloads/AvianNetwork/AvianPoolPicker/total)
   ![Maintenance](https://img.shields.io/maintenance/yes/2022)
   ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/AvianNetwork/AvianPoolPicker)
-</div
+</div>
 CDN Index:
 
 [Pools.Json](https://aviannetwork.github.io/AvianPoolPicker/pools.json)
