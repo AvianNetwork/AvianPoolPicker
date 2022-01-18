@@ -1,6 +1,6 @@
 # AvianPoolPicker
-[![GitHub all releases](https://img.shields.io/github/downloads/AvianNetwork/AvianPoolPicker/total)
-[![Maintenance](https://img.shields.io/maintenance/yes/2022)
+![GitHub all releases](https://img.shields.io/github/downloads/AvianNetwork/AvianPoolPicker/total)
+![Maintenance](https://img.shields.io/maintenance/yes/2022)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/AvianNetwork/AvianPoolPicker)
 
 
