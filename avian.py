@@ -17,7 +17,6 @@ except ModuleNotFoundError:
     import pyperclip as clipboard
 import multiprocessing
 import pip
-from tkinter import *
 ask = input("[1] GPU\n[2] CPU\nPick your hardware(Enter the number): ")
 if ask == "1": 
     pools = requests.get("https://aviannetwork.github.io/AvianPoolPicker/pools.json").json()
