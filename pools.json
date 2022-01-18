@@ -59,7 +59,7 @@
             "DeLevel": "1"
         },
         {
-            "Password": "c=AVN, mc=AVN"
+            "Password": "c=AVN,mc=AVN"
         }
     ],
     "Zpool": [{

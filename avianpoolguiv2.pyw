@@ -1,5 +1,6 @@
 import configparser
 import enum
+from pickletools import stringnl_noescape
 from types import TracebackType
 from typing import List
 import requests
@@ -21,10 +22,10 @@ global allpoolarray
 global allpools
 global poolkeys
 global pools
-
 stratum_array = []
 password_array = []
 pools = requests.get("https://aviannetwork.github.io/AvianPoolPicker/pools.json").json()
+print(pools)
 allpoolarray = []
 allpools = pools
 try:
@@ -33,13 +34,13 @@ try:
 except KeyError or IndexError:
     pass
 #Get the hardware page
-
 e = tk.StringVar()
 e.set("Pick an Option")
 hardlist = tk.OptionMenu(window, e, "GPU").pack()
 hardbutton = tk.Button(text="Next ->", command=lambda: get_selected())
 hardbutton.pack()
 # Pool picking page
+
 poolvar = tk.StringVar()
 poolvar.set("Pick an Option")
 poollist = tk.OptionMenu(window, poolvar, *allpoolarray)
@@ -59,7 +60,6 @@ def gps():
     if pool_op == "Pick an Option":
         pass
     else:
-        try:
             global ma
             ma = allpoolarray.index(pool_op)
             global getpoolfa
@@ -72,11 +72,15 @@ def gps():
                 poolsarray.append(keys)
             global stratumvar
             global password
-            password = pools[getpoolfa][2]
-            for keys in password:
-                password_array.append(keys)
+            global password_str
+            password = pools[getpoolfa][2]["Password"]
+            password_str = password.split()
+            if password == "None":
+                pass
+            else:
+                for keys in password_str:
+                    password_array.append(keys)
             global passwordkeys
-            passwordkeys = password[password_array[1]]
             stratumvar = tk.StringVar()
             stratumvar.set("Pick an Option")
             stratumlist = tk.OptionMenu(window, stratumvar, *poolsarray)
@@ -85,8 +89,6 @@ def gps():
             poolbutton.destroy()
             stratumlist.pack()
             stratumbutton.pack()
-        except:
-            pass
 # addr entry
 text = tk.StringVar()
 ead = tk.Label(text="Enter Avian Address: ")
@@ -106,10 +108,11 @@ jsonvar = tk.StringVar()
 jsonvar.set("Pick an Option")
 jsonoption = tk.OptionMenu(window, jsonvar, *json_miners)
 jsonbtn = tk.Button(window, text="Next ->", command=lambda: gthw())
-#software
 
 def gpc():
     strat_get = stratumvar.get()
+    global pool_get
+    pool_get = getpool[strat_get]
     if strat_get == "Pick an Option":
         pass
     else:
@@ -120,23 +123,28 @@ def gtm():
     global text_get
     text_get = text.get()
     global set_mode
-    if password_array[0] == "None":
+    if password == "None":
         password_array.append("x")
     else:
+        textbutton.destroy()
         pass
     modemenu.pack()
     modebutton.pack() 
 def gtr():
     global get_modeget
     get_modeget = modeget.get()
+    print(modeget.get())
     if get_modeget == "Pick an Option":
+        print("passing")
         pass
-    if get_modeget == "Solo":
-        password_array.append("m=solo")
-    jsonoption.pack()
-    jsonbtn.pack()
+    else:
+        jsonoption.pack()
+        jsonbtn.pack()
+        modebutton.destroy()
+sofvar = tk.StringVar()
+sofvar.set("Pick an Option")
+global sofbu
 def gthw():
-    modebutton.destroy()
     global get_miner_op
     get_miner_op = jsonvar.get()
     if get_miner_op == "Pick an Option":
@@ -144,12 +152,36 @@ def gthw():
     else:
         global json_miner_index
         global get_soft
+        global get_software_ops
         json_miner_index = json_miners.index(get_miner_op)        
-        get_soft = json_miner[get_miner_op]
+        get_soft = json_miner[get_miner_op][0]
         get_software_ops = []
         for keys in get_soft:
-             get_software_ops.append(keys)
-
+            get_software_ops.append(keys)
+        print(get_software_ops)
+        global strvar
+        global strlist
+        global strbutton
+        strvar = tk.StringVar()
+        strvar.set("Pick an Option")
+        strlist = tk.OptionMenu(window, strvar, *get_software_ops)
+        strbutton = tk.Button(window, text="Next", command=lambda: gidk())
+        strlist.pack()
+        strbutton.pack()
+        jsonbtn.destroy()
+#software
+def gidk():
+    get_str = strvar.get()
+    if get_str == "Pick an Option":
+        pass
+    else:
+        get_index_soft = get_software_ops.index(get_str)
+        soft = get_soft[get_str]
+        print(soft)
+        print(password_array)
+        finallabel = (f"{soft} -a x16rt -o {pool_get} -u {text_get}")
+        tk.Label(text=finallabel).pack()
+tk.Label(window, text="").pack(padx="250")
     # label = (f"minername -o {poolsarray[2]} -u {text_get} -p {password_array[2]}")
     # tk.Label(text=label).pack()
     #tk.Label(text="Thank you for using the BETA version of this app. It only goes up till here for now - primitt").pack()
