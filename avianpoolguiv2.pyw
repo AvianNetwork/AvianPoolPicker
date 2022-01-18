@@ -21,6 +21,7 @@ global window
 window = tk.Tk()
 window.geometry = ("600x600")
 window.title = "Avian Pool Picker - Avian Utility by ayonull"
+window.configure(bg="#bffffa")
 #global area (set globals here)
 global allpoolarray
 global allpools
@@ -205,7 +206,7 @@ def gidk():
             print("Not Soloed")
         finallabel = (f"{soft} -a x16rt -o {pool_get} -u {text_get} -p {solo_pass}")
         clipboard.copy(finallabel)
-        tk.Label(text=finallabel, font=("Roboto", 11)).pack()
+        tk.Label(text=finallabel, font=("Roboto", 11, )).pack()
         tk.Label(text="Copied command line to Clipboard", font=("Roboto", 8)).pack()
 tk.Label(window, text="").pack(padx="230")
     # label = (f"minername -o {poolsarray[2]} -u {text_get} -p {password_array[2]}")
