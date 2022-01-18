@@ -13,6 +13,10 @@ import signal
 import sys
 from ping3 import ping
 import tkinter as tk
+try:
+    import clipboard
+except ModuleNotFoundError:
+    import pyperclip as clipboard
 global window
 window = tk.Tk()
 window.geometry = ("600x600")
@@ -84,6 +88,7 @@ def gps():
             stratumvar = tk.StringVar()
             stratumvar.set("Pick an Option")
             stratumlist = tk.OptionMenu(window, stratumvar, *poolsarray)
+            global stratumbutton
             stratumbutton = tk.Button(window, text="Next", command=lambda: gpc())
             get_strat = stratumvar.get()
             poolbutton.destroy()
@@ -119,6 +124,7 @@ def gpc():
         ead.pack()
         textbox.pack()
         textbutton.pack()
+        stratumbutton.destroy()
 def gtm():
     global text_get
     text_get = text.get()
@@ -129,7 +135,8 @@ def gtm():
         textbutton.destroy()
         pass
     modemenu.pack()
-    modebutton.pack() 
+    modebutton.pack()
+    textbutton.destroy() 
 def gtr():
     global get_modeget
     get_modeget = modeget.get()
@@ -137,10 +144,17 @@ def gtr():
     if get_modeget == "Pick an Option":
         print("passing")
         pass
-    else:
+    def des():
         jsonoption.pack()
         jsonbtn.pack()
         modebutton.destroy()
+    if get_modeget == "Solo":
+        password_array.append("m=solo")
+        des()
+    if get_modeget == "Pool":
+        des()
+    else:
+        pass
 sofvar = tk.StringVar()
 sofvar.set("Pick an Option")
 global sofbu
@@ -179,9 +193,21 @@ def gidk():
         soft = get_soft[get_str]
         print(soft)
         print(password_array)
-        finallabel = (f"{soft} -a x16rt -o {pool_get} -u {text_get}")
-        tk.Label(text=finallabel).pack()
-tk.Label(window, text="").pack(padx="250")
+        try:
+            sologet = password_array[1]
+            if password_array[0] == "x":
+                solo_pass = (f"{sologet}")
+            else:
+                solo_pass = (f"{password_array[0]}, {sologet}")
+            print(password_array, solo_pass)
+        except:
+            solo_pass = (f"{password_array[0]}")
+            print("Not Soloed")
+        finallabel = (f"{soft} -a x16rt -o {pool_get} -u {text_get} -p {solo_pass}")
+        clipboard.copy(finallabel)
+        tk.Label(text=finallabel, font=("Roboto", 11)).pack()
+        tk.Label(text="Copied command line to Clipboard", font=("Roboto", 8)).pack()
+tk.Label(window, text="").pack(padx="230")
     # label = (f"minername -o {poolsarray[2]} -u {text_get} -p {password_array[2]}")
     # tk.Label(text=label).pack()
     #tk.Label(text="Thank you for using the BETA version of this app. It only goes up till here for now - primitt").pack()
