@@ -11,6 +11,9 @@ from colorama import Fore, Back
 import signal
 import sys
 from ping3 import ping
+if sys.argv[1] == "-help":
+    print("Help Menu\n -help = Shows this help menu and exits the program")
+    exit()
 try:
     import clipboard
 except ModuleNotFoundError:
