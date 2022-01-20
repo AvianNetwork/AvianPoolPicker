@@ -125,7 +125,8 @@ if ask == "1":
         print("\nThis is now copied onto your clipboard!")
         askbatdoc = input("Would you like to create a mining document? (y/n): ")
         if askbatdoc == "y" or askbatdoc == "yes" or askbatdoc == "Yes":
-            gpubatdoc = open("mine-gpu.bat", 'x')
+            dir_To_save = input("Please enter the directory where you would like to save the file:")
+            gpubatdoc = open(str(dir_To_save) + "mine-gpu.bat", 'x')
             gpubatdoc.write(cmdlinewf)
     except IndexError:
         print("You missed an option!")
@@ -229,7 +230,8 @@ if ask == "2":
         print("\nThis is now copied onto your clipboard!")
         cpuaskwrite = input("Would you like to make a miner file? (y/n): ")
         if cpuaskwrite == "y" or cpuaskwrite == "yes" or cpuaskwrite == "Yes":
-            batdoc = open("mine-cpu.bat", 'x')
+            dir_To_save = input("Please enter the directory where you would like to save the file:")
+            batdoc = open(str(dir_To_save) + "mine-cpu.bat", 'x')
             batdoc.write(cmdlinewf)
     except IndexError:
         print("You missed an option!")
