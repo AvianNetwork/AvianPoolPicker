@@ -11,9 +11,6 @@ from colorama import Fore, Back
 import signal
 import sys
 from ping3 import ping
-if sys.argv[1] == "-help":
-    print("Help Menu\n -help = Shows this help menu and exits the program")
-    exit()
 try:
     import clipboard
 except ModuleNotFoundError:
@@ -124,7 +121,7 @@ if ask == "1":
         print("\nThis is now copied onto your clipboard!")
         askbatdoc = input("Would you like to create a mining document? (y/n): ")
         if askbatdoc == "y" or askbatdoc == "yes" or askbatdoc == "Yes":
-            dir_To_save = input("Please enter the directory where you would like to save the file:")
+            dir_To_save = input("Please enter the directory where you would like to save the file (Click enter and leave blank to select current directory):")
             gpubatdoc = open(str(dir_To_save) + "mine-gpu.bat", 'x')
             gpubatdoc.write(cmdlinewf)
     except IndexError:

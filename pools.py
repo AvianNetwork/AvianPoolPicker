@@ -21,10 +21,13 @@ class get_pools:
         CPUpool = requests.get("https://aviannetwork.github.io/AvianPoolPicker/poolscpu.json").json()
         return CPUpool
 class GPU:
-    def idworkersGPU(self, pool):
+    def idworkersGPU(self, pool, id):
+        try:
+            Gpool = requests.get("https://aviannetwork.github.io/AvianPoolPicker/pools_new.json").json()
             global selection
-            GPUpool = requests.get("https://aviannetwork.github.io/AvianPoolPicker/pools.json").json()
-            selection = GPUpool[pool]
-            if selection == "ZergPool":
-                formatzerg = selection[1]["Password"]
-                return formatzerg
+            poolname = Gpool[pool]
+            selection = Gpool[pool][1]['Password']
+            if selection == "ID=":
+                return (f"ID={id}")
+        except:
+            return (f"Unable to get pool with name: {pool}")
