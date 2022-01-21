@@ -31,3 +31,5 @@ class GPU:
                 return (f"ID={id}")
         except:
             return (f"Unable to get pool with name: {pool}")
+    def get_miners():
+        pass
