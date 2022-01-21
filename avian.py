@@ -98,7 +98,6 @@ if ask == "1":
         getstratum = pools[getpoolfa][0][getstratumfa]
     except KeyError or IndexError:
         print("Unable to parse JSON file! Please try again")
-    
     askminer = input("Choose the Miner:\n [1] TeamRedMiner \n [2] T-Rex 19.4.1\nPick the corrisponding number: ")
     if askminer == "2":
         choices.append("t-rex.exe")

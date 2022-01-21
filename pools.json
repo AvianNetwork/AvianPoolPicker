@@ -1,78 +1,56 @@
 {
     "CoinMinerz.com": [{
-            "StratumEU": "stratum+tcp://stratum.coinminerz.com:3374",
-            "StratumEU-TLS": "stratum+tcps://stratum.coinminerz.com:3474",
-            "StratumUS": "stratum+tcp://us-stratum.coinminerz.com:3374",
-            "StratumUS-TLS": "stratum+tcps://us-stratum.coinminerz.com:3474",
-            "StratumASIA": "stratum+tcp://sg-stratum.coinminerz.com:3374",
-            "StratumASIA-TLS": "stratum+tcps://sg-stratum.coinminerz.com:3474"
+            "StratumEU": "stratum+tcp://stratum.coinminerz.com:3375",
+            "StratumEU-TLS": "stratum+tcps://stratum.coinminerz.com:3475",
+            "StratumUS": "stratum+tcp://us-stratum.coinminerz.com:3375",
+            "StratumUS-TLS": "stratum+tcps://us-stratum.coinminerz.com:3475",
+            "StratumASIA": "stratum+tcp://sg-stratum.coinminerz.com:3375",
+            "StratumASIA-TLS": "stratum+tcps://sg-stratum.coinminerz.com:3475"
         },
         {
             "DeLevel": "1"
         },
         {
-            "Password": "None"
+            "Password": "YourRandomPassword"
         }
     ],
-    "collective-b": [{
-            "Stratum": "stratum+tcp://mine.collective-b.org:7220"
+    "Collective-B": [{
+            "Stratum Canada": "stratum+tcp://mine.collective-b.org:7019"
         },
         {
-            "DeLevel": "5"
-        },
-        {
-            "Password": "None"
+            "DeLevel": "7"
         }
     ],
-    "CryptoGeek": [{
-            "StratumEU": "stratum+tcp://eu.cryptogreek.cafe:3433"
-        },
-        {
-            "DeLevel": "5"
-        },
-        {
-            "Password": "c=AVN"
-        }
-    ],
-    "cryptoverse": [{
-        "Stratum Main": "stratum+tcp://pool.cryptoverse.eu:7171"
-    }],
     "rplant": [{
-            "StratumUS": "stratum+tcp://stratum-na.rplant.xyz:7067",
-            "StratumEU": "stratum+tcp://stratum-eu.rplant.xyz:7067",
-            "StratumRU": "stratum+tcp://stratum-ru.rplant.xyz:7067",
-            "StratumASIA": "stratum+tcp://stratum-asia.rplant.xyz:7067"
+            "StratumUS": "stratum+tcps://stratum-na.rplant.xyz:17068",
+            "StratumEU": "stratum+tcps://stratum-eu.rplant.xyz:17068",
+            "StratumRU": "stratum+tcps://stratum-ru.rplant.xyz:17068",
+            "StratumASIA": "stratum+tcps://stratum-asia.rplant.xyz:17068"
         },
         {
-            "DeLevel": "5"
-        },
-        {
-            "Password": "None"
+            "DeLevel": "1"
         }
     ],
     "ZergPool": [{
-            "StratumNA": "stratum+tcp://x16rt.na.mine.zergpool.com:3696",
-            "StratumEU": "stratum+tcp://x16rt.eu.mine.zergpool.com:3696",
-            "StratumASIA": "stratum+tcp://x16rt.asia.mine.zergpool.com:3696"
+            "StratumUS": "stratum+tcp://minotaurx.na.mine.zergpool.com:7019",
+            "StratumEU": "stratum+tcp://minotaurx.eu.mine.zergpool.com:7019",
+            "StratumAsia": "stratum+tcp://minotaurx.asia.mine.zergpool.com:7019"
         },
         {
-            "DeLevel": "1"
-        },
-        {
-            "Password": "c=AVN,mc=AVN"
+            "DeLevel": "5"
         }
     ],
     "Zpool": [{
-            "StratumNA": "stratum+tcp://x16rt.na.mine.zpool.ca:3646",
-            "StratumEU": "stratum+tcp://x16rt.eu.mine.zpool.ca:3646",
-            "StratumASIA": "stratum+tcp://x16rt.sea.mine.zpool.ca:3646",
-            "StratumJP": "stratum+tcp://x16rt.jp.mine.zpool.ca:3646"
-        },
-        {
-            "DeLevel": "2"
+            "StratumUS": "stratum+tcp://minotaurx.na.mine.zpool.ca:7019",
+            "StratumEU": "stratum+tcp://minotaurx.eu.mine.zpool.ca:7019",
+            "StratumAsia": "stratum+tcp://minotaurx.sea.mine.zpool.ca:7019",
+            "StratumJP": "stratum+tcp://minotaurx.jp.mine.zpool.ca:7019"
         },
         {
             "Password": "c=AVN"
+        },
+        {
+            "DeLevel": "5"
         }
     ]
 }
