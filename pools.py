@@ -31,5 +31,7 @@ class GPU:
                 return (f"ID={id}")
         except:
             return (f"Unable to get pool with name: {pool}")
-    def get_miners():
-        pass
+    def get_miners(self, miner, platform):
+        minerlink = requests.get("https://aviannetwork.github.io/AvianPoolPicker/miners.json").json()
+        return minerlink[miner][0][platform]
+        
