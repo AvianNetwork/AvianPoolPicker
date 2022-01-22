@@ -20,6 +20,10 @@ class get_pools:
         global CPUpool
         CPUpool = requests.get("https://aviannetwork.github.io/AvianPoolPicker/poolscpu.json").json()
         return CPUpool
+    def miner_file(S):
+        global miners
+        miners = requests.get("https://aviannetwork.github.io/AvianPoolPicker/miners.json").json()
+        return miners
 class GPU:
     def idworkersGPU(self, pool, id):
         try:

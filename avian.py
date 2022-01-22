@@ -11,6 +11,11 @@ from colorama import Fore, Back
 import signal
 import sys
 from ping3 import ping
+import pools
+GPU = pools.GPU()
+init = pools.get_pools()
+miners = init.miner_file()
+
 try:
     import clipboard
 except ModuleNotFoundError:
@@ -95,11 +100,23 @@ if ask == "1":
         getstratum = pools[getpoolfa][0][getstratumfa]
     except KeyError or IndexError:
         print("Unable to parse JSON file! Please try again")
-    askminer = input("Choose the Miner:\n [1] TeamRedMiner \n [2] T-Rex 19.4.1\nPick the corrisponding number: ")
-    if askminer == "2":
-        choices.append("t-rex.exe")
-    if askminer == "1":
-        choices.append("teamredminer.exe")
+    miners_array = []
+    for choice, keys in enumerate(miners, 1):
+        print("[",choice,"]", keys)
+    for choice, keys in enumerate(miners, 1):
+        miners_array.append(keys)
+    askminer = input("Choose the Miner:")
+    try:
+        getminerint = int(askminer) -1
+        getminerfa = miners_array[getminerint]
+        choices.append(getminerfa)
+    except:
+        print("No Value Supplied or Index out of range")
+        exit()
+    # if askminer == "2":
+    #     choices.append("t-rex.exe")
+    # if askminer == "1":
+    #     choices.append("teamredminer.exe")
 # if askminer == "3":
 #     choices.append("cpumineropt.exe")
     choices.append(getstratum)
