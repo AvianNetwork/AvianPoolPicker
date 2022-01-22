@@ -109,10 +109,10 @@ if ask == "1":
     try:
         getminerint = int(askminer) -1
         getminerfa = miners_array[getminerint]
-        choices.append(getminerfa)
     except:
         print("No Value Supplied or Index out of range")
         exit()
+    asksystemos = input("Enter System OS:")
     # if askminer == "2":
     #     choices.append("t-rex.exe")
     # if askminer == "1":

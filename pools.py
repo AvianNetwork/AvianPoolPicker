@@ -38,7 +38,7 @@ class GPU:
     def get_miners(self, miner, platform):
         minerlink = requests.get("https://aviannetwork.github.io/AvianPoolPicker/miners.json").json()
         return minerlink[miner][0][platform]
-    def get_password(pool):
+    def get_password(self, pool):
         try:
             Gpool = requests.get("https://aviannetwork.github.io/AvianPoolPicker/pools_new.json").json()
             password = Gpool[pool][1]["Password"]
