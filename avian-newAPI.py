@@ -145,12 +145,16 @@ if ask == "1":
     askminerid = input("Would you like to enter a rig name? (y/n): ")
     if askminerid == "Yes" or askminerid == "yes" or askminerid == "y":
         askrigname = input("Enter rig name: ")
-        themaker = GPU.idworkersGPU(pool=getpoolfa, id=askrigname, walletaddress1=askaddress)
+        themaker = GPU.idworkersGPU(pool=getpoolfa, id=askrigname, walletaddress=askaddress)
+        themakeris = True
+    else:
+        themaker = False
+        themakeris = False
     askmtype = input(
         "[1] Solo or [2] Pool \nPlease choose the number of the mining type you want: ")
     if askmtype == "1":
         choices.append("m=SOLO")
-    password = (f"")
+    password = GPU.get_password(pool=getpoolfa, rigname=themaker)
 # if askminer == "3":
 #     askthreads = input("Enter Amount of threads you want to use: ")
 #     choices.append(askthreads)
@@ -159,7 +163,7 @@ if ask == "1":
             f"{choices[0]} -a x16rt -o {choices[1]} -u {choices[2]} -p {password}")
         clipboard.copy(cmdlinewf)
         print("Command Line: ", choices[0], "-a x16rt -o",
-              choices[1], "-u", choices[2], "-p", choices[3])
+              choices[1], "-u", choices[2], "-p", password)
         print("\nThis is now copied onto your clipboard!")
         askbatdoc = input(
             "Would you like to create a mining document? (y/n): ")

@@ -40,16 +40,30 @@ class GPU:
     def get_miners(self, miner, platform):
         minerlink = requests.get("https://aviannetwork.github.io/AvianPoolPicker/miners.json").json()
         return minerlink[miner][0][platform]
-    def get_password(self, pool):
+    def get_password(self, pool, rigname):
         try:
             Gpool = requests.get("https://aviannetwork.github.io/AvianPoolPicker/pools_new.json").json()
             password = Gpool[pool][1]["Password"]
             coin = Gpool[pool][1]["Coin"]
-            if coin == "":
-                format_password = (f"{password}")
+            if pool == "ZergPool":
+                if rigname == False:
+                    if coin == "":
+                        format_password = (f"{password}")
+                    else:
+                        format_password = (f"{coin}")
+                    return format_password
+                else:
+                    if coin == "":
+                        format_password = (f"{password},{rigname}")
+                    else:
+                        format_password = (f"{coin},{rigname}")
+                    return format_password
             else:
-                format_password = (f"{coin}")
-            return format_password
+                    if coin == "":
+                        format_password = (f"{password}")
+                    else:
+                        format_password = (f"{coin}")
+                    return format_password
         except:
             print(f"Could not get password of {pool}")
             exit()
