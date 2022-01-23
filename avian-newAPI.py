@@ -1,3 +1,5 @@
+import pip
+import multiprocessing
 import configparser
 import enum
 from types import TracebackType
@@ -12,6 +14,7 @@ import signal
 import sys
 from ping3 import ping
 import pools
+import platform
 GPU = pools.GPU()
 init = pools.get_pools()
 miners = init.miner_file()
@@ -20,11 +23,10 @@ try:
     import clipboard
 except ModuleNotFoundError:
     import pyperclip as clipboard
-import multiprocessing
-import pip
 ask = input("[1] GPU\n[2] CPU\nPick your hardware(Enter the number): ")
-if ask == "1": 
-    pools = requests.get("https://aviannetwork.github.io/AvianPoolPicker/pools_new.json").json()
+if ask == "1":
+    pools = requests.get(
+        "https://aviannetwork.github.io/AvianPoolPicker/pools_new.json").json()
     allpoolarray = []
     allpools = pools
     try:
@@ -35,14 +37,15 @@ if ask == "1":
         exit()
     try:
         for count, poolkey in enumerate(pools, 1):
-            print("[",count,"]", poolkey)
+            print("[", count, "]", poolkey)
     except KeyError:
         print("Error 404: Cannot recive pools.")
 # allpoolswf = (f"{allpoolarray}")
 # print(f"{allpoolarray}")
-    pickpool = input("What pool would you like to pick from the above list? (Pick the number): ")
+    pickpool = input(
+        "What pool would you like to pick from the above list? (Pick the number): ")
     try:
-        pickpoolint = int(pickpool) -1
+        pickpoolint = int(pickpool) - 1
         getpoolfa = allpoolarray[pickpoolint]
     except IndexError:
         print("You selected a non integer number.")
@@ -50,13 +53,12 @@ if ask == "1":
         getpool = pools[getpoolfa][0]
     except KeyError or IndexError:
         print("Unable to parse JSON file! Please try again")
-    
 
     stratums = []
     stratumskeys = []
     choices = []
     try:
-    # Enters the keys into the array so that it can be parsed
+        # Enters the keys into the array so that it can be parsed
         for key in getpool:
             stratums.append(key)
             continue
@@ -73,7 +75,7 @@ if ask == "1":
         exit()
     try:
         for choice, keys in enumerate(getpool, 1):
-            print("[",choice,"]", keys)
+            print("[", choice, "]", keys)
     except KeyError or IndexError:
         print("Index Error")
         print("\nClosing in 6 Seconds...")
@@ -92,7 +94,7 @@ if ask == "1":
         print("Closing")
         exit()
     try:
-        getstratumint = int(askstratum) -1
+        getstratumint = int(askstratum) - 1
         getstratumfa = stratumarray[getstratumint]
     except IndexError:
         print("You selected a non integer number.")
@@ -102,17 +104,35 @@ if ask == "1":
         print("Unable to parse JSON file! Please try again")
     miners_array = []
     for choice, keys in enumerate(miners, 1):
-        print("[",choice,"]", keys)
+        print("[", choice, "]", keys)
     for choice, keys in enumerate(miners, 1):
         miners_array.append(keys)
     askminer = input("Choose the Miner:")
     try:
-        getminerint = int(askminer) -1
+        getminerint = int(askminer) - 1
         getminerfa = miners_array[getminerint]
     except:
         print("No Value Supplied or Index out of range")
         exit()
-    asksystemos = input("Enter System OS:")
+    system_array = []
+    systemvalue_array = []
+    try:
+        system = miners[getminerfa][0]
+        for choice, keys in enumerate(system, 1):
+            print("[", choice, "]", keys)
+            system_array.append(keys)
+        asksystemos = input("Enter System OS (Click enter to get the systemOS): ")
+        if asksystemos == "":
+            appendsystemauto = GPU.get_miners(miner=getminerfa, platform=platform.system())
+            choices.append(appendsystemauto)
+        else:
+            getsystemint = int(asksystemos) - 1
+            getsystemfa = system_array[getsystemint]
+            getsystem = miners[getminerfa][0][getsystemfa]
+            choices.append(getsystem)
+    except:
+        print("Incorrect Option")
+        exit()
     # if askminer == "2":
     #     choices.append("t-rex.exe")
     # if askminer == "1":
@@ -132,19 +152,24 @@ if ask == "1":
 #     askthreads = input("Enter Amount of threads you want to use: ")
 #     choices.append(askthreads)
     try:
-        cmdlinewf = (f"{choices[0]} -a x16rt -o {choices[1]} -u {choices[2]} -p {choices[3]}")
+        cmdlinewf = (
+            f"{choices[0]} -a x16rt -o {choices[1]} -u {choices[2]} -p {choices[3]}")
         clipboard.copy(cmdlinewf)
-        print("Command Line: ", choices[0], "-a x16rt -o", choices[1], "-u", choices[2], "-p", choices[3])
+        print("Command Line: ", choices[0], "-a x16rt -o",
+              choices[1], "-u", choices[2], "-p", choices[3])
         print("\nThis is now copied onto your clipboard!")
-        askbatdoc = input("Would you like to create a mining document? (y/n): ")
+        askbatdoc = input(
+            "Would you like to create a mining document? (y/n): ")
         if askbatdoc == "y" or askbatdoc == "yes" or askbatdoc == "Yes":
-            dir_To_save = input("Please enter the directory where you would like to save the file (Click enter and leave blank to select current directory):")
+            dir_To_save = input(
+                "Please enter the directory where you would like to save the file (Click enter and leave blank to select current directory):")
             gpubatdoc = open(str(dir_To_save) + "mine-gpu.bat", 'x')
             gpubatdoc.write(cmdlinewf)
     except IndexError:
         print("You missed an option!")
 if ask == "2":
-    cpupools = requests.get("https://aviannetwork.github.io/AvianPoolPicker/poolscpu.json").json()
+    cpupools = requests.get(
+        "https://aviannetwork.github.io/AvianPoolPicker/poolscpu.json").json()
     cpuallpoolsarray = []
     cpuallpools = cpupools
     try:
@@ -156,12 +181,13 @@ if ask == "2":
         exit()
     try:
         for count, poolkey in enumerate(cpupools, 1):
-            print("[",count,"]", poolkey)
-    except KeyError or IndexError: 
+            print("[", count, "]", poolkey)
+    except KeyError or IndexError:
         print("Could not recive pools! Try again later.")
         time.sleep(5)
         exit()
-    cpupickpool = input("What pool would you like to pick from the above list? (Pick the Number): ")
+    cpupickpool = input(
+        "What pool would you like to pick from the above list? (Pick the Number): ")
     try:
         cpupickpoolint = int(cpupickpool)-1
         cpugetpoolfa = cpuallpoolsarray[cpupickpoolint]
@@ -173,7 +199,7 @@ if ask == "2":
         print("Error parsing JSON")
         time.sleep(5)
         exit()
-    
+
     cpustratums = []
     cpustratumkeys = []
     cpuchoices = []
@@ -182,20 +208,20 @@ if ask == "2":
             cpustratums.append(cpukey)
             continue
     except KeyError or IndexError:
-        print("Pool does not exist") 
+        print("Pool does not exist")
         time.sleep(5)
         exit()
     try:
         print("Avalible Stratums:")
         for cpukeys in cpugetpool:
-            continue;
+            continue
     except:
         print("Pool does not exist")
         time.sleep(5)
         exit()
     try:
         for choice, cpukeys in enumerate(cpugetpool, 1):
-            print("[",choice,"]", cpukeys)
+            print("[", choice, "]", cpukeys)
     except KeyError or IndexError:
         print("Index Error")
         print("\nClosing in 6 Seconds...")
@@ -222,32 +248,37 @@ if ask == "2":
         cpugetstratum = cpupools[cpugetpoolfa][0][cpugetstratumfa]
     except KeyError or IndexError:
         print("Unable to parse JSON file! Please try again")
-    cpuaskminer = input("Choose the Miner: \n[1] Rplant CPU Miner OPT\nEnter the Number of the Miner you want to pick: ")
+    cpuaskminer = input(
+        "Choose the Miner: \n[1] Rplant CPU Miner OPT\nEnter the Number of the Miner you want to pick: ")
     if cpuaskminer == "1":
         cpuchoices.append("cpuminer-sse2.exe")
     cpuchoices.append(cpugetstratum)
     cpuaskaddress = input("Enter avian Address (Right click to paste): ")
     cpuchoices.append(cpuaskaddress)
-    cpuaskmtype = input("[1] Solo or [2] Pool \nPlease choose the number of the mining type you want: ")
+    cpuaskmtype = input(
+        "[1] Solo or [2] Pool \nPlease choose the number of the mining type you want: ")
     if cpuaskmtype == "1":
         cpuchoices.append("c=AVN, m=solo")
     if cpuaskmtype == "2":
         cpuchoices.append("c=AVN")
-    cputhreads = (f"How many threads would you like to use? There is a max of {multiprocessing.cpu_count()} threads on your computer: ")
+    cputhreads = (
+        f"How many threads would you like to use? There is a max of {multiprocessing.cpu_count()} threads on your computer: ")
     cpuaskthreads = input(cputhreads)
     cpuchoices.append(cpuaskthreads)
     try:
-        cmdlinewf = (f"{cpuchoices[0]} -a minotaurx -o {cpuchoices[1]} -u {cpuchoices[2]} -p {cpuchoices[3]} -t {cpuchoices[4]}")
+        cmdlinewf = (
+            f"{cpuchoices[0]} -a minotaurx -o {cpuchoices[1]} -u {cpuchoices[2]} -p {cpuchoices[3]} -t {cpuchoices[4]}")
         clipboard.copy(cmdlinewf)
-        print("Command Line: ", cpuchoices[0], "-a minotaurx -o", cpuchoices[1], "-u", cpuchoices[2], "-p", cpuchoices[3], "-t", cpuchoices[4])
+        print("Command Line: ", cpuchoices[0], "-a minotaurx -o", cpuchoices[1],
+              "-u", cpuchoices[2], "-p", cpuchoices[3], "-t", cpuchoices[4])
         print("\nThis is now copied onto your clipboard!")
         cpuaskwrite = input("Would you like to make a miner file? (y/n): ")
         if cpuaskwrite == "y" or cpuaskwrite == "yes" or cpuaskwrite == "Yes":
-            dir_To_save = input("Please enter the directory where you would like to save the file:")
+            dir_To_save = input(
+                "Please enter the directory where you would like to save the file:")
             batdoc = open(str(dir_To_save) + "mine-cpu.bat", 'x')
             batdoc.write(cmdlinewf)
     except IndexError:
         print("You missed an option!")
 print("Finished Operation, Closing in 5 seconds automatically...")
 time.sleep(5)
-
