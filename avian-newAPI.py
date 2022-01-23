@@ -155,12 +155,17 @@ if ask == "1":
     if askmtype == "1":
         choices.append("m=SOLO")
     password = GPU.get_password(pool=getpoolfa, rigname=themaker)
+    workername = GPU.idworkersGPU(pool=getpoolfa, id=askrigname, walletaddress=askaddress)
+    if getpoolfa == "ZergPool":
+        poolr = (f"{askaddress}")
+    else:
+        poolr = (f"{workername}")
 # if askminer == "3":
 #     askthreads = input("Enter Amount of threads you want to use: ")
 #     choices.append(askthreads)
     try:
         cmdlinewf = (
-            f"{choices[0]} -a x16rt -o {choices[1]} -u {choices[2]} -p {password}")
+            f"{choices[0]} -a x16rt -o {choices[1]} -u {poolr} -p {password}")
         clipboard.copy(cmdlinewf)
         print("Command Line: ", choices[0], "-a x16rt -o",
               choices[1], "-u", choices[2], "-p", password)
