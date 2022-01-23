@@ -25,7 +25,7 @@ class get_pools:
         miners = requests.get("https://aviannetwork.github.io/AvianPoolPicker/miners.json").json()
         return miners
 class GPU:
-    def idworkersGPU(self, pool, id):
+    def idworkersGPU(self, pool, id, walletaddress):
         try:
             Gpool = requests.get("https://aviannetwork.github.io/AvianPoolPicker/pools_new.json").json()
             global selection
@@ -33,6 +33,8 @@ class GPU:
             selection = Gpool[pool][1]['Password']
             if selection == "ID=":
                 return (f"ID={id}")
+            else:
+                return (f"{id}.{walletaddress}")
         except:
             return (f"Unable to get pool with name: {pool}")
     def get_miners(self, miner, platform):
