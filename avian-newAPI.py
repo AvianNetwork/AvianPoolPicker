@@ -142,18 +142,21 @@ if ask == "1":
     choices.append(getstratum)
     askaddress = input("Enter avian Address (Right click to paste): ")
     choices.append(askaddress)
+    askminerid = input("Would you like to enter a rig name? (y/n): ")
+    if askminerid == "Yes" or askminerid == "yes" or askminerid == "y":
+        askrigname = input("Enter rig name: ")
+        themaker = GPU.idworkersGPU(pool=getpoolfa, id=askrigname, walletaddress1=askaddress)
     askmtype = input(
         "[1] Solo or [2] Pool \nPlease choose the number of the mining type you want: ")
     if askmtype == "1":
         choices.append("m=SOLO")
-    if askmtype == "2":
-        choices.append("x")
+    password = (f"")
 # if askminer == "3":
 #     askthreads = input("Enter Amount of threads you want to use: ")
 #     choices.append(askthreads)
     try:
         cmdlinewf = (
-            f"{choices[0]} -a x16rt -o {choices[1]} -u {choices[2]} -p {choices[3]}")
+            f"{choices[0]} -a x16rt -o {choices[1]} -u {choices[2]} -p {password}")
         clipboard.copy(cmdlinewf)
         print("Command Line: ", choices[0], "-a x16rt -o",
               choices[1], "-u", choices[2], "-p", choices[3])
