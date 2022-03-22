@@ -1,6 +1,6 @@
-import pools
-import platform
-GPU = pools.GPU()
-print(GPU.idworkersGPU(pool="ZergPool", id="I_Love_Zergpool"))
-print(GPU.get_miners(miner="T-Rex Miner", platform=platform.system()))
-print(GPU.get_password(pool="rplant"))
+import os
+import time
+
+list = [["stratum-us", "2"], ["stratum-EU", "2"]]
+sorted = list.sort()
+print(sorted)

@@ -57,10 +57,20 @@ if ask == "1":
     stratums = []
     stratumskeys = []
     choices = []
+    stratumarray = []
     try:
         # Enters the keys into the array so that it can be parsed
         for key in getpool:
-            stratums.append(key)
+            get_p = getpool[key]
+            try:
+                split_get_p = get_p.split("stratum+tcp://")
+                split_get_p_2 = split_get_p[1].split(":")
+            except:
+                split_get_p = get_p.split("stratum+tcps://")
+                split_get_p_2 = split_get_p[1].split(":")
+            p_ping = ping(split_get_p_2[0], unit="ms")
+            pingpkey = [key, p_ping]
+            stratums.append(pingpkey)
             continue
     except KeyError:
         print(Fore.WHITE + "Pool Does not Exist")
@@ -74,8 +84,8 @@ if ask == "1":
         print("Pool Does Not exist")
         exit()
     try:
-        for choice, keys in enumerate(getpool, 1):
-            print("[", choice, "]", keys)
+        for choice, keys in enumerate(stratums, 1):
+            print("[", choice, "]", keys[0] + " | Ping: " + str(keys[1]))
     except KeyError or IndexError:
         print("Index Error")
         print("\nClosing in 6 Seconds...")
@@ -83,7 +93,6 @@ if ask == "1":
         print("Closing")
         exit()
     askstratum = input("Pick the Stratum (Enter a number): ")
-    stratumarray = []
     try:
         for keys in getpool:
             stratumarray.append(keys)
