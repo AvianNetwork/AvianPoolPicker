@@ -1,4 +1,25 @@
 {
+    "Mining4People.com": [{
+            "Stratum FR": "stratum+tcp://fr.mining4people.com:3638",
+            "Stratum FR-SSL": "stratum+tcps://fr.mining4people.com:23638",
+            "Stratum GB": "stratum+tcp://gb.mining4people.com:3638",
+            "Stratum GB-SSL": "stratum+tcps://gb.mining4people.com:23638",
+            "Stratum IN": "stratum+tcp://in.mining4people.com:3638",
+            "Stratum IN-SSL": "stratum+tcps://in.mining4people.com:23638",
+            "Stratum US": "stratum+tcp://us.mining4people.com:3638",
+            "Stratum US-SSL": "stratum+tcps://us.mining4people.com:23638",
+            "Stratum AU": "stratum+tcp://au.mining4people.com:3638",
+            "Stratum AU-SSL": "stratum+tcps://au.mining4people.com:23638",
+            "Stratum FR": "stratum+tcp://fr.mining4people.com:3638",
+            "Stratum FR-SSL": "stratum+tcps://fr.mining4people.com:23638",
+    },
+        {
+            "DeLevel": ""
+        },
+        {
+            "Password": "None"
+        }
+    ],
     "CoinMinerz.com": [{
             "StratumEU": "stratum+tcp://stratum.coinminerz.com:3375",
             "StratumEU-TLS": "stratum+tcps://stratum.coinminerz.com:3475",
